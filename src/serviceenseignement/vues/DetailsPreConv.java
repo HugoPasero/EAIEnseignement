@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.swing.BorderFactory;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -42,6 +43,9 @@ public class DetailsPreConv extends javax.swing.JFrame {
         this.tuteur = false;
         this.verifStageCursus = false;
         this.verifDuree = false;
+        TitledBorder border = BorderFactory.createTitledBorder("Enseignant Chercheur");
+        border.setTitleColor(Color.RED);
+        this.pTuteur.setBorder(border);
         
         this.tfAssurNom.setText(this.fenMere.getConv().get(pc).getEtudiant().getAssurance());
         this.tfAssurNumContrat.setText(this.fenMere.getConv().get(pc).getEtudiant().getContrat());
@@ -71,14 +75,10 @@ public class DetailsPreConv extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         tfEntNom = new javax.swing.JTextField();
         tfSIREN = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        tfAssurNumContrat = new javax.swing.JTextField();
-        tfAssurNom = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        tfGratification = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        pDuree = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tfDateDeb = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -95,25 +95,24 @@ public class DetailsPreConv extends javax.swing.JFrame {
         lDiplome = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        tfResumeActivites1 = new javax.swing.JTextField();
+        tfResumeActivites = new javax.swing.JTextField();
         bOkStageCursus = new javax.swing.JButton();
         bNonOkStageCursus = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
+        pTuteur = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         tfTuteur = new javax.swing.JTextField();
         pDetailsLegaux = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         lNom = new javax.swing.JLabel();
         lPrenom = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        tfResumeActivites = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        tfGratification = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        tfAssurNom = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        tfAssurNumContrat = new javax.swing.JTextField();
         bValider = new javax.swing.JButton();
         bAnnule = new javax.swing.JButton();
+
+        puVerif.setMinimumSize(new java.awt.Dimension(363, 100));
 
         jLabel2.setText("Merci de tout vérifier et de rentrer un tuteur");
 
@@ -166,6 +165,13 @@ public class DetailsPreConv extends javax.swing.JFrame {
         tfSIREN.setEditable(false);
         tfSIREN.setText("numSIREN");
 
+        jLabel7.setText("Gratification :");
+
+        tfGratification.setEditable(false);
+        tfGratification.setText("jTextField1");
+
+        jLabel8.setText("€");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -181,6 +187,12 @@ public class DetailsPreConv extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfEntNom)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfGratification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -189,65 +201,18 @@ public class DetailsPreConv extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(tfEntNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEntNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(tfGratification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(tfSIREN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Assurance"));
-
-        jLabel17.setText("Vérifier que l'étudiant possède une assurance de");
-
-        jLabel18.setText("responsabilité civile valide sur la période.");
-
-        jLabel19.setText("Nom :");
-
-        jLabel20.setText("Numéro de contrat :");
-
-        tfAssurNumContrat.setEditable(false);
-        tfAssurNumContrat.setText("numContrat");
-
-        tfAssurNom.setEditable(false);
-        tfAssurNom.setText("nomAssur");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel19))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfAssurNumContrat)
-                            .addComponent(tfAssurNom))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(tfAssurNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(tfAssurNumContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Durée du stage"));
+        pDuree.setBorder(javax.swing.BorderFactory.createTitledBorder("Durée du stage"));
 
         jLabel3.setText("Date de début :");
 
@@ -277,20 +242,20 @@ public class DetailsPreConv extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout pDureeLayout = new javax.swing.GroupLayout(pDuree);
+        pDuree.setLayout(pDureeLayout);
+        pDureeLayout.setHorizontalGroup(
+            pDureeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pDureeLayout.createSequentialGroup()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfDureeMin, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(pDureeLayout.createSequentialGroup()
+                .addGroup(pDureeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pDureeLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfDateDeb, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,32 +263,36 @@ public class DetailsPreConv extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfDateFin, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDureeLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDuree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(tfDuree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jVerifierDuree)))
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pDureeLayout.setVerticalGroup(
+            pDureeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pDureeLayout.createSequentialGroup()
+                .addGroup(pDureeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel5)
                     .addComponent(tfDateDeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfDuree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(tfDateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pDureeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(tfDureeMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jVerifierDuree))
+                .addGroup(pDureeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jVerifierDuree)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pDureeLayout.createSequentialGroup()
+                        .addGroup(pDureeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(tfDuree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
 
         pStageCursus.setBorder(javax.swing.BorderFactory.createTitledBorder("Stage et cursus"));
@@ -338,9 +307,9 @@ public class DetailsPreConv extends javax.swing.JFrame {
 
         jLabel29.setText("Résumé du sujet et des activités");
 
-        tfResumeActivites1.setEditable(false);
-        tfResumeActivites1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tfResumeActivites1.setText("resume");
+        tfResumeActivites.setEditable(false);
+        tfResumeActivites.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        tfResumeActivites.setText("resume");
 
         bOkStageCursus.setText("Ok");
         bOkStageCursus.addActionListener(new java.awt.event.ActionListener() {
@@ -363,7 +332,7 @@ public class DetailsPreConv extends javax.swing.JFrame {
             .addGroup(pStageCursusLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pStageCursusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pStageCursusLayout.createSequentialGroup()
                         .addGroup(pStageCursusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,7 +351,7 @@ public class DetailsPreConv extends javax.swing.JFrame {
             .addGroup(pStageCursusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pStageCursusLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(tfResumeActivites1)
+                    .addComponent(tfResumeActivites)
                     .addContainerGap()))
         );
         pStageCursusLayout.setVerticalGroup(
@@ -404,37 +373,39 @@ public class DetailsPreConv extends javax.swing.JFrame {
             .addGroup(pStageCursusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pStageCursusLayout.createSequentialGroup()
                     .addGap(78, 78, 78)
-                    .addComponent(tfResumeActivites1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfResumeActivites, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(27, Short.MAX_VALUE)))
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Enseignant Chercheur"));
+        pTuteur.setBorder(javax.swing.BorderFactory.createTitledBorder("Enseignant Chercheur"));
 
         jLabel21.setText("Tuteur enseignant pour le stage :");
 
-        tfTuteur.setText("Ajouter tuteur");
+        tfTuteur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfTuteurKeyTyped(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout pTuteurLayout = new javax.swing.GroupLayout(pTuteur);
+        pTuteur.setLayout(pTuteurLayout);
+        pTuteurLayout.setHorizontalGroup(
+            pTuteurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTuteurLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfTuteur, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pTuteurLayout.setVerticalGroup(
+            pTuteurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pTuteurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel21)
                 .addComponent(tfTuteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pDetailsLegaux.setBorder(javax.swing.BorderFactory.createTitledBorder("Données étudiant"));
-
-        jLabel11.setText("Vérifier que l'étudiant est bien inscrit dans cette formation\n");
 
         jLabel22.setText("Étudiant");
 
@@ -442,20 +413,15 @@ public class DetailsPreConv extends javax.swing.JFrame {
 
         lPrenom.setText("Prénom :");
 
-        jLabel28.setText("Résumé du sujet et des activités");
+        tfAssurNom.setEditable(false);
+        tfAssurNom.setText("nomAssur");
 
-        tfResumeActivites.setEditable(false);
-        tfResumeActivites.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        tfResumeActivites.setText("resume");
+        jLabel19.setText("Nom :");
 
-        jLabel12.setText("diplomante.");
+        jLabel20.setText("Numéro de contrat :");
 
-        jLabel7.setText("Gratification :");
-
-        tfGratification.setEditable(false);
-        tfGratification.setText("jTextField1");
-
-        jLabel8.setText("€");
+        tfAssurNumContrat.setEditable(false);
+        tfAssurNumContrat.setText("numContrat");
 
         javax.swing.GroupLayout pDetailsLegauxLayout = new javax.swing.GroupLayout(pDetailsLegaux);
         pDetailsLegaux.setLayout(pDetailsLegauxLayout);
@@ -464,34 +430,26 @@ public class DetailsPreConv extends javax.swing.JFrame {
             .addGroup(pDetailsLegauxLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pDetailsLegauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfResumeActivites)
                     .addGroup(pDetailsLegauxLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(7, 7, 7)
                         .addGroup(pDetailsLegauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pDetailsLegauxLayout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addGap(7, 7, 7)
-                                .addGroup(pDetailsLegauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lPrenom)
-                                    .addComponent(lNom)))
-                            .addGroup(pDetailsLegauxLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfGratification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8))
-                            .addComponent(jLabel28))
-                        .addGap(0, 270, Short.MAX_VALUE))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                            .addComponent(lPrenom)
+                            .addComponent(lNom)))
+                    .addGroup(pDetailsLegauxLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfAssurNom, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfAssurNumContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         pDetailsLegauxLayout.setVerticalGroup(
             pDetailsLegauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pDetailsLegauxLayout.createSequentialGroup()
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pDetailsLegauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(lNom))
@@ -499,13 +457,10 @@ public class DetailsPreConv extends javax.swing.JFrame {
                 .addComponent(lPrenom)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pDetailsLegauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(tfGratification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfResumeActivites, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel19)
+                    .addComponent(tfAssurNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(tfAssurNumContrat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -516,14 +471,13 @@ public class DetailsPreConv extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pStageCursus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pDuree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(lNomPrenomEntreprise))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pTuteur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pDetailsLegaux, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -537,13 +491,11 @@ public class DetailsPreConv extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pStageCursus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pDuree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pTuteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pDetailsLegaux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -594,7 +546,7 @@ public class DetailsPreConv extends javax.swing.JFrame {
 
     private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed
         PreConvention p = this.fenMere.getConv().get(pc);
-        if(this.tfTuteur.getText() == "")
+        if(this.tfTuteur.getText().equals(""))
             this.puVerif.setVisible(true);
         else{
             if(this.verifStageCursus == true && this.verifDuree == true){
@@ -607,6 +559,7 @@ public class DetailsPreConv extends javax.swing.JFrame {
                     } catch (NamingException ex) {
                         Logger.getLogger(DetailsPreConv.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    this.dispose();
                 }else{
                     p.setValidite(false);
                     this.fenMere.getS().getConv().remove(pc);
@@ -616,27 +569,47 @@ public class DetailsPreConv extends javax.swing.JFrame {
                     } catch (NamingException ex) {
                         Logger.getLogger(DetailsPreConv.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    this.dispose();
                 }
             }else{
                 this.puVerif.setVisible(true);
             }
         }    
-        this.dispose();
     }//GEN-LAST:event_bValiderActionPerformed
 
     private void bNonOkStageCursusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNonOkStageCursusActionPerformed
         this.stageCursus = false;
-        this.pStageCursus.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+        
+        TitledBorder border = BorderFactory.createTitledBorder("Stage et cursus");
+        border.setTitleColor(Color.RED);
+        this.pStageCursus.setBorder(border);
+        
         this.verifStageCursus = true;
     }//GEN-LAST:event_bNonOkStageCursusActionPerformed
 
     private void jVerifierDureeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVerifierDureeActionPerformed
         PreConvention p = this.fenMere.getConv().get(pc);
-        if(this.fenMere.getS().duree(p, (int) this.tfDureeMin.getValue()))
+        int nbMois = DateConvention.nbMois(p.getDateDeb().getDate(), p.getDateFin().getDate());
+        
+        //int nbMoisMin = this.jTextField1;
+        int nbMoisMin = ((Number)this.tfDureeMin.getValue()).intValue();
+        
+        boolean bonneDuree = this.fenMere.getS().duree(p, nbMoisMin);
+        
+        if(bonneDuree){
+            System.out.println(bonneDuree + " mini : " + nbMoisMin + " mois : " + nbMois);
             this.duree = true;
-        else{
+            this.tfDureeMin.setForeground(Color.BLACK);
+            TitledBorder border = BorderFactory.createTitledBorder("Durée du stage");
+            border.setTitleColor(Color.GREEN);
+            this.pDuree.setBorder(border);
+        }else{
+            System.out.println(bonneDuree + " mini : " + nbMoisMin + " mois : " + nbMois);
             this.duree = false;
             this.tfDureeMin.setForeground(Color.red);
+            TitledBorder border = BorderFactory.createTitledBorder("Durée du stage");
+            border.setTitleColor(Color.RED);
+            this.pDuree.setBorder(border);
         }
         this.verifDuree = true;
     }//GEN-LAST:event_jVerifierDureeActionPerformed
@@ -644,12 +617,26 @@ public class DetailsPreConv extends javax.swing.JFrame {
     private void bOkStageCursusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOkStageCursusActionPerformed
         this.stageCursus = true;
         this.verifStageCursus = true;
-        this.pStageCursus.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        TitledBorder border = BorderFactory.createTitledBorder("Stage et cursus");
+        border.setTitleColor(Color.GREEN);
+        this.pStageCursus.setBorder(border);
     }//GEN-LAST:event_bOkStageCursusActionPerformed
 
     private void bPuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPuOkActionPerformed
         this.puVerif.dispose();
     }//GEN-LAST:event_bPuOkActionPerformed
+
+    private void tfTuteurKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTuteurKeyTyped
+        if(this.tfTuteur.getText().equals("")){
+            TitledBorder border = BorderFactory.createTitledBorder("Enseignant Chercheur");
+            border.setTitleColor(Color.RED);
+            this.pTuteur.setBorder(border);
+        }else{
+            TitledBorder border = BorderFactory.createTitledBorder("Enseignant Chercheur");
+            border.setTitleColor(Color.GREEN);
+            this.pTuteur.setBorder(border);
+        }
+    }//GEN-LAST:event_tfTuteurKeyTyped
 
     /**
      * @param args the command line arguments
@@ -696,21 +683,16 @@ public class DetailsPreConv extends javax.swing.JFrame {
     private javax.swing.JButton bPuOk;
     private javax.swing.JButton bValider;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -721,16 +703,15 @@ public class DetailsPreConv extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JButton jVerifierDuree;
     private javax.swing.JLabel lDiplome;
     private javax.swing.JLabel lNom;
     private javax.swing.JLabel lNomPrenomEntreprise;
     private javax.swing.JLabel lPrenom;
     private javax.swing.JPanel pDetailsLegaux;
+    private javax.swing.JPanel pDuree;
     private javax.swing.JPanel pStageCursus;
+    private javax.swing.JPanel pTuteur;
     private javax.swing.JDialog puVerif;
     private javax.swing.JTextField tfAssurNom;
     private javax.swing.JTextField tfAssurNumContrat;
@@ -741,7 +722,6 @@ public class DetailsPreConv extends javax.swing.JFrame {
     private javax.swing.JTextField tfEntNom;
     private javax.swing.JTextField tfGratification;
     private javax.swing.JTextField tfResumeActivites;
-    private javax.swing.JTextField tfResumeActivites1;
     private javax.swing.JTextField tfSIREN;
     private javax.swing.JTextField tfTuteur;
     // End of variables declaration//GEN-END:variables

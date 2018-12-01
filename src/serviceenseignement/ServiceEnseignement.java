@@ -80,7 +80,7 @@ public class ServiceEnseignement {
 
     static MessageConsumer receiver = null;
     public static void init() throws NamingException, JMSException {
-     System.setProperty("java.naming.factory.initial", "com.sun.enterprise.naming.SerialInitContextFactory");
+        System.setProperty("java.naming.factory.initial", "com.sun.enterprise.naming.SerialInitContextFactory");
         System.setProperty("org.omg.CORBA.ORBInitialHost", "127.0.0.1");
         System.setProperty("org.omg.CORBA.ORBInitialPort", "3700");
         InitialContext context = new InitialContext();
@@ -240,11 +240,10 @@ public class ServiceEnseignement {
     public boolean duree(PreConvention p, int nbMoisMin){
         DateConvention dDeb = p.getDateDeb();
         DateConvention dFin = p.getDateFin();
-        if(DateConvention.nbMois(dDeb.getDate(), dFin.getDate()) > nbMoisMin)
+        if(DateConvention.nbMois(dDeb.getDate(), dFin.getDate()) >= nbMoisMin)
+            return true;
+        else
             return false;
-        else if((DateConvention.nbMois(dDeb.getDate(), dFin.getDate()) == nbMoisMin && DateConvention.nbJours(dDeb.getDate(), dFin.getDate()) > 0))
-            return false;
-        return true;
     }
     
     /**
