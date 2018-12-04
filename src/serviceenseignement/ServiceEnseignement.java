@@ -159,10 +159,9 @@ public class ServiceEnseignement {
      * @throws NamingException 
      */
     public void recevoir() throws NamingException {
-        //System.setProperty
         try {
+            //Dégager le while true à terme
             while(true) {
-            //for(int i = 0; i < 10; ++i){
                 Message message = receiver.receiveNoWait();
                 if (message instanceof ObjectMessage) {
                     //on récupère le message
@@ -195,10 +194,7 @@ public class ServiceEnseignement {
      * @throws InterruptedException 
      */
     public void envoyer(PreConvention pc) throws NamingException{
-
         try {
-            //while(true){
-            //for (int i = 0; i < count; i++) {
             ObjectMessage message = session.createObjectMessage();
             message.setObject(pc);
             sender.send(message);
@@ -211,7 +207,7 @@ public class ServiceEnseignement {
     }
     
     /**
-     * Méth service vérifie que la durée envisagée est suffisante pour valider l’unité d’enseignement (UE) correspondante (par
+     * Méthode qui vérifie que la durée envisagée est suffisante pour valider l’unité d’enseignement (UE) correspondante (par
      * exemple 5 mois minimum)
      */
     /**

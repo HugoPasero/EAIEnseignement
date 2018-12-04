@@ -135,7 +135,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="315" max="32767" attributes="0"/>
-                      <Component id="bOuvrirRefusees" min="-2" max="-2" attributes="0"/>
+                      <Component id="bOuvrir" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane6" alignment="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -145,19 +145,19 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPane6" pref="225" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bOuvrirRefusees" min="-2" max="-2" attributes="0"/>
+                      <Component id="bOuvrir" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="bOuvrirRefusees">
+            <Component class="javax.swing.JButton" name="bOuvrir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ouvrir"/>
                 <Property name="actionCommand" type="java.lang.String" value="bOuvrir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bOuvrirRefuseesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bOuvrirActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane6">

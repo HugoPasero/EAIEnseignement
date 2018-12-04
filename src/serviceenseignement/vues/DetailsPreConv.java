@@ -557,7 +557,6 @@ public class DetailsPreConv extends javax.swing.JFrame {
     /**
      * Évènement généré lors du clic sur "Valider"
      * On ouvre une popup "renseignez tous les champs" si il manque une vérification
-     * On 
      * @param evt 
      */
     private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed

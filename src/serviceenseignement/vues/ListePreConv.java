@@ -82,7 +82,7 @@ public class ListePreConv extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tabNavigation = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        bOuvrirRefusees = new javax.swing.JButton();
+        bOuvrir = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tabAValider = new javax.swing.JTable();
         bMaj = new javax.swing.JButton();
@@ -131,11 +131,11 @@ public class ListePreConv extends javax.swing.JFrame {
         tabNavigation.setToolTipText("");
         tabNavigation.setName(""); // NOI18N
 
-        bOuvrirRefusees.setText("Ouvrir");
-        bOuvrirRefusees.setActionCommand("bOuvrir");
-        bOuvrirRefusees.addActionListener(new java.awt.event.ActionListener() {
+        bOuvrir.setText("Ouvrir");
+        bOuvrir.setActionCommand("bOuvrir");
+        bOuvrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bOuvrirRefuseesActionPerformed(evt);
+                bOuvrirActionPerformed(evt);
             }
         });
 
@@ -172,7 +172,7 @@ public class ListePreConv extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(0, 315, Short.MAX_VALUE)
-                .addComponent(bOuvrirRefusees))
+                .addComponent(bOuvrir))
             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
@@ -180,7 +180,7 @@ public class ListePreConv extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bOuvrirRefusees))
+                .addComponent(bOuvrir))
         );
 
         tabNavigation.addTab("À Valider", jPanel3);
@@ -224,7 +224,7 @@ public class ListePreConv extends javax.swing.JFrame {
      * @see DetailsPreConv
      * @param evt 
      */
-    private void bOuvrirRefuseesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOuvrirRefuseesActionPerformed
+    private void bOuvrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOuvrirActionPerformed
         int[] lignes = tabAValider.getSelectedRows();
         //on ne peut modifier qu'une seule ligne
         //on teste donc combien de lignes sont sélectionnées et on retourne une pop-up d'info
@@ -237,7 +237,7 @@ public class ListePreConv extends javax.swing.JFrame {
             DetailsPreConv fen = new DetailsPreConv(this, key);
             fen.setVisible(true);
         }
-    }//GEN-LAST:event_bOuvrirRefuseesActionPerformed
+    }//GEN-LAST:event_bOuvrirActionPerformed
 
     /**
      * Fermeture de la popup d'information "Selectionner qu'une seule ligne"
@@ -326,7 +326,7 @@ public class ListePreConv extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bMaj;
-    private javax.swing.JButton bOuvrirRefusees;
+    private javax.swing.JButton bOuvrir;
     private javax.swing.JButton bPuOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
