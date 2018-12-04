@@ -10,7 +10,8 @@ import javax.swing.BorderFactory;
 import javax.swing.border.TitledBorder;
 
 /**
- *
+ * Fenêtre des détails de la préconvention à valider 
+ * sélectionnée dans le service enseignement 
  * @author marieroca
  */
 public class DetailsPreConv extends javax.swing.JFrame {
@@ -21,8 +22,8 @@ public class DetailsPreConv extends javax.swing.JFrame {
 
     /**
      * Creates new form DetailsPreConv
-     * @param fenMere
-     * @param pc
+     * @param fenMere fenêtre de la liste des préconventions du service enseignement
+     * @param pc préconvention à valider
      */
     public DetailsPreConv(ListePreConv fenMere, Long pc) {
         initComponents();
@@ -36,6 +37,7 @@ public class DetailsPreConv extends javax.swing.JFrame {
         DateConvention dFin = this.fenMere.getConv().get(pc).getDateFin();
         this.tfDateDeb.setText(dDeb.toString());
         this.tfDateFin.setText(dFin.toString());
+        //On affiche la durée sous le format "? mois et ? jours"
         String duree = DateConvention.nbMois(dDeb.getDate(), dFin.getDate()) + " mois " + DateConvention.nbJours(dDeb.getDate(), dFin.getDate()) + " jours";
         this.tfDuree.setText(duree);
         this.stageCursus = false; 
@@ -43,6 +45,7 @@ public class DetailsPreConv extends javax.swing.JFrame {
         this.tuteur = false;
         this.verifStageCursus = false;
         this.verifDuree = false;
+        //Le panel "Enseignant Chercheur" a un titre rouge tant qu'on a pas affecté de tuteur
         TitledBorder border = BorderFactory.createTitledBorder("Enseignant Chercheur");
         border.setTitleColor(Color.RED);
         this.pTuteur.setBorder(border);
@@ -146,9 +149,10 @@ public class DetailsPreConv extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Service Enseignement - Détails");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel1.setText("Détails à valider de la pré-convetion");
+        jLabel1.setText("Détails à valider de la pré-convention");
 
         lNomPrenomEntreprise.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lNomPrenomEntreprise.setText("de NOM Prénom à Entreprise");
@@ -199,13 +203,14 @@ public class DetailsPreConv extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(tfEntNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
                         .addComponent(tfGratification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(tfEntNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -540,97 +545,159 @@ public class DetailsPreConv extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Évènement généré lors du clic sur "Annuler"
+     * Fermeture de la fenêtre
+     * @param evt 
+     */
     private void bAnnuleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnnuleActionPerformed
         this.dispose();
     }//GEN-LAST:event_bAnnuleActionPerformed
 
+    /**
+     * Évènement généré lors du clic sur "Valider"
+     * On ouvre une popup "renseignez tous les champs" si il manque une vérification
+     * On 
+     * @param evt 
+     */
     private void bValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValiderActionPerformed
         PreConvention p = this.fenMere.getConv().get(pc);
+        //Si le tuteur n'a pas été affecté
         if(this.tfTuteur.getText().equals(""))
+            //On ouvre la popup "Merci de tout vérifier et de rentrer un tuteur"
             this.puVerif.setVisible(true);
+        //Sinon
         else{
+            //Si tout a été vérifié (durée et sujet)
             if(this.verifStageCursus == true && this.verifDuree == true){
+                //Si la durée et le stage ont été validés 
                 if(this.duree && this.stageCursus){
+                    //On valide la préconv
                     p.setValidite(true);
-                    this.fenMere.getS().getConv().remove(pc);
-                    this.fenMere.getS().getConvTraitees().putIfAbsent(pc, p);
-                    try {
-                        this.fenMere.getS().envoyer(p);
-                    } catch (NamingException ex) {
-                        Logger.getLogger(DetailsPreConv.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    this.dispose();
+                //Sinon
                 }else{
+                    //On refuse la préconv 
                     p.setValidite(false);
-                    this.fenMere.getS().getConv().remove(pc);
-                    this.fenMere.getS().getConvTraitees().putIfAbsent(pc, p);
-                    try {
-                        this.fenMere.getS().envoyer(p);
-                    } catch (NamingException ex) {
-                        Logger.getLogger(DetailsPreConv.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    this.dispose();
                 }
+                //on bouge la préconvention des conv à traiter aux conv traitées
+                this.fenMere.getS().getConv().remove(pc);
+                this.fenMere.getS().getConvTraitees().putIfAbsent(pc, p);
+                try {
+                    //On l'envoie au service des stages
+                    this.fenMere.getS().envoyer(p);
+                } catch (NamingException ex) {
+                    Logger.getLogger(DetailsPreConv.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //On ferme la fenêtre
+                this.dispose();
             }else{
                 this.puVerif.setVisible(true);
             }
         }    
     }//GEN-LAST:event_bValiderActionPerformed
 
+    /**
+     * Évènement généré lors du clic sur "Non" dans le panel Stage et cursus
+     * @param evt 
+     */
     private void bNonOkStageCursusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNonOkStageCursusActionPerformed
+        //Stage et cursus refusés
         this.stageCursus = false;
         
+        //On affiche visuellement que stage/cursus ont été vérifiés et refusés
+        //Titre du panel en rouge 
         TitledBorder border = BorderFactory.createTitledBorder("Stage et cursus");
         border.setTitleColor(Color.RED);
         this.pStageCursus.setBorder(border);
         
+        //Stage et cursus vérifiés
         this.verifStageCursus = true;
     }//GEN-LAST:event_bNonOkStageCursusActionPerformed
 
+    /**
+     * Évènement généré lors du clic sur "Vérifier" dans le panel Durée du stage
+     * @param evt 
+     */
     private void jVerifierDureeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVerifierDureeActionPerformed
         PreConvention p = this.fenMere.getConv().get(pc);
         int nbMois = DateConvention.nbMois(p.getDateDeb().getDate(), p.getDateFin().getDate());
         
-        //int nbMoisMin = this.jTextField1;
+        //Je récupère le nombre minimum de mois pour valider l'UE
         int nbMoisMin = ((Number)this.tfDureeMin.getValue()).intValue();
         
+        //Je le compare avec la durée du stage
         boolean bonneDuree = this.fenMere.getS().duree(p, nbMoisMin);
         
+        //Si la durée est  suffisante pour valider l'UE
         if(bonneDuree){
-            System.out.println(bonneDuree + " mini : " + nbMoisMin + " mois : " + nbMois);
+            //la durée est bonne
             this.duree = true;
+            //J'écris la durée en noir
             this.tfDureeMin.setForeground(Color.BLACK);
+            //On affiche visuellement que la durée a été vérifiée et qu'elle est valide
+            //Titre du panel en vert
             TitledBorder border = BorderFactory.createTitledBorder("Durée du stage");
             border.setTitleColor(Color.GREEN);
             this.pDuree.setBorder(border);
+        //Sinon
         }else{
-            System.out.println(bonneDuree + " mini : " + nbMoisMin + " mois : " + nbMois);
+            //la durée n'est pas bonne
             this.duree = false;
+            //J'écris la durée en rouge
             this.tfDureeMin.setForeground(Color.red);
+            //On affiche visuellement que la durée a été vérifiée et qu'elle est refusée
+            //Titre du panel en rouge
             TitledBorder border = BorderFactory.createTitledBorder("Durée du stage");
             border.setTitleColor(Color.RED);
             this.pDuree.setBorder(border);
         }
+        //on a vérifié la durée
         this.verifDuree = true;
     }//GEN-LAST:event_jVerifierDureeActionPerformed
 
+    /**
+     * Évènement généré lors du clic sur "Ok" dans le panel Stage et cursus
+     * @param evt 
+     */
     private void bOkStageCursusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOkStageCursusActionPerformed
+        //Stage cursur validées
         this.stageCursus = true;
+        //Stage et cursus vérifiés
         this.verifStageCursus = true;
+        //On affiche visuellement que le stage et le cursus ont été vérifiés 
+        //et qu'ils sont validés
+        //Titre du panel en vert
         TitledBorder border = BorderFactory.createTitledBorder("Stage et cursus");
         border.setTitleColor(Color.GREEN);
         this.pStageCursus.setBorder(border);
     }//GEN-LAST:event_bOkStageCursusActionPerformed
 
+    /**
+     * Évènement généré lors du clic sur "Ok" de la pop up "renseignez tous les champs"
+     * On ferme la fenêtre
+     * @param evt 
+     */
     private void bPuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPuOkActionPerformed
         this.puVerif.dispose();
     }//GEN-LAST:event_bPuOkActionPerformed
 
+    /**
+     * Évènement généré lorsque l'utilisateur entre un nom de tuteur
+     * On affiche visuellement qu'un tuteur est renseigné dès que la textfield n'est plus vide
+     * @param evt 
+     */
     private void tfTuteurKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTuteurKeyTyped
+        //Si la textfield est vide
+        //On affiche visuellement qu'aucun tuteur n'est rentré en mettant le titre 
+        //du panel "Enseignant Chercheur" en rouge
         if(this.tfTuteur.getText().equals("")){
             TitledBorder border = BorderFactory.createTitledBorder("Enseignant Chercheur");
             border.setTitleColor(Color.RED);
             this.pTuteur.setBorder(border);
+        //Sinon
+        //On affiche visuellement qu'un tuteur est rentré en mettant le titre 
+        //du panel "Enseignant Chercheur" en vert
+        //Aucune vérification n'est faite sur le nom du tuteur, on considère l'utilisateur intelligent
         }else{
             TitledBorder border = BorderFactory.createTitledBorder("Enseignant Chercheur");
             border.setTitleColor(Color.GREEN);
