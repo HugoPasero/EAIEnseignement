@@ -20,11 +20,12 @@ public class ListePreConv extends javax.swing.JFrame {
     private HashMap<Long, PreConvention> convTraitees;
 
     /**
-     * Creates new form Enseignement
+     * Creates new form ListePreConv
      * @throws javax.naming.NamingException
      */
     public ListePreConv() throws NamingException {
         initComponents();
+        this.maj();
     }
 
     /**
@@ -65,6 +66,35 @@ public class ListePreConv extends javax.swing.JFrame {
      */
     public HashMap<Long, PreConvention> getConv() {
         return s.getConv();
+    }
+    
+    /**
+     * Méthode permettant de mettre à jour l'affichage
+     */
+    public void maj(){
+        s = new ServiceEnseignement(conv, convTraitees);
+        
+        convTraitees = s.getConvTraitees();
+        conv = s.getConv();
+        
+        // On supprime toutes les lignes du tableau pour le mettre à jour avec les nouvelles valeurs
+        DefaultTableModel model = (DefaultTableModel) this.tabAValider.getModel();
+        for(int j = 0; j < model.getRowCount(); j++){
+            model.removeRow(j);
+        }
+        
+        ((DefaultTableModel) this.tabAValider.getModel()).setRowCount(conv.size());
+        
+        this.tabAValider.getColumn(tabAValider.getColumnName(0)).setMinWidth(45);
+        this.tabAValider.getColumn(tabAValider.getColumnName(0)).setMaxWidth(60);
+        System.out.println("HashMap : " + conv);
+        int i = 0;
+        for(PreConvention c : conv.values()){
+            this.tabAValider.setValueAt(c.getId(), i, 0);
+            this.tabAValider.setValueAt(c.getStage(), i, 1);
+            this.tabAValider.setValueAt(c.getEtudiant().getDiplome().getNiveau() + c.getEtudiant().getDiplome().getIntitule(), i, 2);
+            i++;
+        }
     }
 
     /**
@@ -253,29 +283,7 @@ public class ListePreConv extends javax.swing.JFrame {
      * @param evt 
      */
     private void bMajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bMajActionPerformed
-        s = new ServiceEnseignement(conv, convTraitees);
-        
-        convTraitees = s.getConvTraitees();
-        conv = s.getConv();
-        
-        // On supprime toutes les lignes du tableau pour le mettre à jour avec les nouvelles valeurs
-        DefaultTableModel model = (DefaultTableModel) this.tabAValider.getModel();
-        for(int j = 0; j < model.getRowCount(); j++){
-            model.removeRow(j);
-        }
-        
-        ((DefaultTableModel) this.tabAValider.getModel()).setRowCount(conv.size());
-        
-        this.tabAValider.getColumn(tabAValider.getColumnName(0)).setMinWidth(45);
-        this.tabAValider.getColumn(tabAValider.getColumnName(0)).setMaxWidth(60);
-        System.out.println("HashMap : " + conv);
-        int i = 0;
-        for(PreConvention c : conv.values()){
-            this.tabAValider.setValueAt(c.getId(), i, 0);
-            this.tabAValider.setValueAt(c.getStage(), i, 1);
-            this.tabAValider.setValueAt(c.getEtudiant().getDiplome().getNiveau() + c.getEtudiant().getDiplome().getIntitule(), i, 2);
-            i++;
-        }
+        this.maj();
     }//GEN-LAST:event_bMajActionPerformed
 
     /**

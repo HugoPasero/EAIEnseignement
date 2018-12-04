@@ -551,6 +551,7 @@ public class DetailsPreConv extends javax.swing.JFrame {
      * @param evt 
      */
     private void bAnnuleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnnuleActionPerformed
+        this.fenMere.maj();
         this.dispose();
     }//GEN-LAST:event_bAnnuleActionPerformed
 
@@ -588,6 +589,7 @@ public class DetailsPreConv extends javax.swing.JFrame {
                     Logger.getLogger(DetailsPreConv.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //On ferme la fenêtre
+                this.fenMere.maj();
                 this.dispose();
             }else{
                 this.puVerif.setVisible(true);
